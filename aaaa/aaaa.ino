@@ -1,4 +1,5 @@
 #include <Servo.h>
+#include <Wire.h>
 
 
 Servo servoKopf;
@@ -41,7 +42,7 @@ void setup() {
   servoKopf.attach(SERVOKOPFPIN);
   servoKopf.write(90);
   Greifarm.attach(SERVOGREIFPIN);
-  Greifarm.write(180);
+  Greifarm.write(170);
   Hebarm.attach(SERVOHEBPIN);
   Hebarm.write(50);
   pinMode(TASTER, INPUT);
@@ -52,12 +53,7 @@ void setup() {
   // 180=Links
 
   Serial.begin(57600);  
-  /* while(1==1){
-   getUSDistInCm(US_HINTEN_PIN);
-   delay(100);
-   } */
-   //untererRaum();
-   neigung_begin();
+  neigung_begin();
 }
 
 
@@ -218,15 +214,4 @@ void loop() {
   zustand_print();
   
 }
-//void untererRaum()
-//{
-//OnRev(1,100);
-//OnFwd(2,100);
-//delay(1000);
-
-//}
-
-
-
-
 

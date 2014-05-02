@@ -4,20 +4,18 @@ const int NEIGUNG_NULL = 322;
 int obenZaehl=0;
 int raumZaehl=0;
 
+#include <LSM303.h>
+
+LSM303 neigung;
+
 void neigung_begin(){
-  //for(int n=0; n<10; n++){
-  //  NEIGUNG_NULL += analogRead(NEIGUNGPIN);
-  //  delay(100);
-  //} 
-  //NEIGUNG_NULL /= 10;
-  //Serial.print(NEIGUNG_NULL);
-  //delay(1000);
-  //Serial.print(";");
+  compass.init();
+  compass.enableDefault();
 }
 
 void checkForNeigung(){
-  int val = NEIGUNG_NULL - analogRead(NEIGUNGPIN);
-
+  compass.read();
+  int val = compass.a.y;
   Serial.print(val);
   Serial.print(";");
   Serial.print(untenZaehl);
