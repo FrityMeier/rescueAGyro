@@ -1,4 +1,4 @@
-const int SCHWELLE_NEIGUNG = 20;
+const int SCHWELLE_NEIGUNG = 2000;
 const int ZZ_NEIGUNG = 10;
 const int NEIGUNG_NULL = 322;
 int obenZaehl=0;
@@ -8,14 +8,22 @@ int raumZaehl=0;
 
 LSM303 neigung;
 
-void neigung_begin(){
-  compass.init();
-  compass.enableDefault();
+void neigung_begin(){ neigung_begin(false); }
+void neigung_begin(boolean test){
+  Wire.begin();
+  neigung.init();
+  neigung.enableDefault();
+  if(test==true){
+    while(1==1){
+      checkForNeigung();
+      delay(1000);
+    } 
+  }
 }
 
 void checkForNeigung(){
-  compass.read();
-  int val = compass.a.y;
+  neigung.read();
+  int val = neigung.a.x;
   Serial.print(val);
   Serial.print(";");
   Serial.print(untenZaehl);
@@ -25,7 +33,7 @@ void checkForNeigung(){
   Serial.print(obenZaehl);
   Serial.print(";");
   Serial.print(neigung_istNachObenGeneigt());
-  Serial.print("n ");
+  Serial.println("n ");
   
   // miss die Neigung - NEIGUNGPIN
   if(val > SCHWELLE_NEIGUNG)
@@ -42,7 +50,6 @@ void checkForNeigung(){
     if(untenZaehl > SCHWELLE_NEIGUNG + 10){
       untenZaehl = SCHWELLE_NEIGUNG + 10;
     }
-
   }
   else
   {

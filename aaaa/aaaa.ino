@@ -53,7 +53,7 @@ void setup() {
   // 180=Links
 
   Serial.begin(57600);  
-  neigung_begin();
+  neigung_begin(true);
 }
 
 
