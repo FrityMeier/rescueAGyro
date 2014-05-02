@@ -6,7 +6,7 @@ Servo servoKopf;
 const int SERVOKOPFPIN = 13;
 const int NEIGUNGPIN = A5;
 
-const int US_PIN = 10;
+const int US_PIN = 12;
 const int US_HINTEN_PIN = 2;
 const int TASTER = 100;
 
@@ -27,7 +27,7 @@ int dist1;
 int dist2;
 int rampenZaehl;
 Servo Greifarm;
-int SERVOGREIFPIN = 12;
+int SERVOGREIFPIN = 10;
 Servo Hebarm;
 int SERVOHEBPIN = 11;
 int lichtZaehl;
@@ -42,7 +42,7 @@ void setup() {
   servoKopf.attach(SERVOKOPFPIN);
   servoKopf.write(90);
   Greifarm.attach(SERVOGREIFPIN);
-  Greifarm.write(170);
+  Greifarm.write(120);
   Hebarm.attach(SERVOHEBPIN);
   Hebarm.write(50);
   pinMode(TASTER, INPUT);
@@ -53,7 +53,7 @@ void setup() {
   // 180=Links
 
   Serial.begin(57600);  
-  neigung_begin(true);
+  neigung_begin();
 }
 
 
