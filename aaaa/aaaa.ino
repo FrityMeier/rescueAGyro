@@ -12,8 +12,8 @@ const int TASTER = 100;
 
 const int LINKS_PIN = 2;
 const int MITTE_LINKS_PIN = 1;
-const int MITTE_RECHTS_PIN = 0;
-const int RECHTS_PIN = 4;
+const int MITTE_RECHTS_PIN = 7;
+const int RECHTS_PIN = 6;
 const int REFLEX_PIN = 3;
 
 int links;
@@ -54,7 +54,7 @@ void setup() {
 
   Serial.begin(57600);  
   neigung_begin();
-  drehen_begin(1);
+  drehen_begin();
 }
 
 
